@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"strings"
 )
 
 type problem struct {
@@ -30,11 +31,11 @@ func main() {
 	}
 
 	problems := parseLines(lines)
-	// Begin correct problem counter
+
 	correct := 0
 
 	for i, p := range problems {
-		fmt.Printf("Problem #%d: %s = ?\n", i+1, p.q)
+		fmt.Printf("Problem #%d: %s = ", i+1, p.q)
 		var answer string
 		fmt.Scanf("%s\n", &answer)
 		if answer == p.a {
@@ -47,9 +48,11 @@ func main() {
 func parseLines(lines [][]string) []problem {
 	ret := make([]problem, len(lines))
 	for i, line := range lines {
-		ret[i] = problem{q: line[0], a: line[1]}
+		ret[i] = problem{q: line[0], a: strings.TrimSpace(line[1])}
 	}
-	return ret
+
+	// Skip header row by slicing []problem
+	return ret[1:]
 }
 
 func exit(msg string) {
