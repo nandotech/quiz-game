@@ -11,5 +11,7 @@ Program takes a CSV file with questions & answers as input and gives the user a 
 
 Results will then be displayed--any questions left incomplete will be counted as wrong.
 
+Flags are `-limit` and `-csv`
+
 
 #### Link to exercise: https://gophercises.com/exercises/quiz
